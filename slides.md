@@ -75,9 +75,11 @@ apps is easy and maintainable.
 --
 ## History
 ##![Timeline](img/Timeline-Frameworks-v1.png)
+source: http://blog.bitovi.com/longevity-or-lack-thereof-in-javascript-frameworks/
 --
 ## History
 ##![Timeline](img/Screenshot-2015-07-23-00.39.03-1200x677.png)
+source: http://blog.bitovi.com/longevity-or-lack-thereof-in-javascript-frameworks/
 --
 ## built with CanJS
 * HP.com (http://www.hp.com/country/us/en/uc/welcome.html)
@@ -387,7 +389,7 @@ can.view.attr("tooltip", function( el, attrData ) {
 
 
 -- 
-## can.Component.extend(p)
+### can.Component.extend(p)
 
 ```javascript
 can.Component.extend({
@@ -414,7 +416,7 @@ can.Component.extend({
 ```
 
 --
-## 2 way binding
+### 2 way binding
 
 Create widgets that use a template, a view-model, and custom tags.
 
@@ -464,6 +466,9 @@ $('#vo').html(template(alger));
 * CanJS plugin and stuffs https://github.com/canjs/
 * bitovi website http://www.bitovi.com/
 * bitovi blog http://www.bitovi.com/blog/
+* http://stealjs.com/
+* http://donejs.com/
+* http://jquerypp.com/
 
 --
 #Questions
