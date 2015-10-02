@@ -469,6 +469,8 @@ $('#vo').html(template(alger));
 * http://stealjs.com/
 * http://donejs.com/
 * http://jquerypp.com/
+* demo app: https://github.com/cherifGsoul/jsmeetup
+* slides: https://github.com/cherifGsoul/jsmeetup-slides
 
 --
 #Questions
