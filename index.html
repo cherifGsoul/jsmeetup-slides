@@ -1,0 +1,1007 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>5 Powerful &amp; Non-popular Frameworks</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,900,700,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="theme/font-awesome.css">
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #f7f7f7;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+code, pre {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: auto;
+  padding: 6px 10px;
+}
+
+code {
+  padding: 0 5px;
+}
+
+pre>code {
+  margin: 0; padding: 0;
+  border: none;
+  background: transparent;
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+* {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 100;
+  color: #333333;
+  background: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, p, ul {
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 900;
+  margin: 20px 0 20px 0;
+}
+
+h2 {
+  color: #AAAAAA;
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+p {
+  font-weight: 100;
+  font-size: 0.9em;
+}
+
+ul {
+  padding: 20px 0 20px 60px;
+  font-size: 0.9em;
+}
+
+.progress-bar {
+  background: #DF6868;
+}
+
+.logo {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media (max-width: 979px) {
+  .logo {
+    height: 120px;
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.slide-content {
+  width: 100%;
+  height: 100%;
+/*  min-height: 600px;
+  min-width: 800px;
+  max-height: 800px;
+  max-width: 1200px;*/
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.title .slide-content {
+  display: table;
+}
+
+.title h1 {
+  display: table-cell;
+  vertical-align: middle;
+  z-index: 10;
+}
+
+.presenter img {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+  border: 5px solid #AAAAAA;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+.presenter h2 {
+  color: #333333;
+}
+.presenter p {
+  text-align: center;
+}
+
+.presenter ul {
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.presenter li {
+  display: inline;
+  padding: 0 10px;
+}
+
+.sponsors h1 {
+  margin: 20px 0 40px 0;
+}
+
+.sponsors p {
+  float: left;
+  text-align: center;
+  width: 50%;
+  padding: 0 20px;
+}
+
+.sponsors p > img {
+  width: 100%;
+  max-width: 240px;
+}
+
+.image p > img {
+  max-width: 600px;
+  max-height: 400px;
+  margin: 20px auto;
+  display: table-cell;
+}
+
+pre {
+  font-size: 90% !important;
+}
+
+#jasmine, #qunit, #mocha {
+  font-size: 2em;
+}
+
+#jasmine {
+  margin-top: 0.5em;
+  float: left;
+}
+
+#qunit {
+  margin-top: 3em;
+  margin-right: 1em;
+  float: right;
+}
+
+#mocha {
+  margin-top: 6em;
+  margin-left: 2em;
+}
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide" id="slide-1">
+    <section class="slide-content"><h1 id="5-powerful-non-popular-frameworks">5 Powerful &amp; Non-popular Frameworks</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><h2 id="knockoutjs">KnockoutJS</h2>
+<p>Knockout is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), KO can help you implement it more simply and maintainably.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><h2 id="cujojs">CujoJS</h2>
+<p>CujoJS is an architectural toolkit for building highly modular, maintainable web applications that are easy to test and refactor, with zero framework lock-in.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h2 id="aria-templates-at-">Aria Templates (AT)</h2>
+<p>A solid foundation for your web applications is what matters.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h2 id="aurelia">Aurelia</h2>
+<p>is a next gen JavaScript client framework for mobile, desktop and web that leverages simple conventions to empower your creativity.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h2 id="canjs">CanJS</h2>
+<p>CanJS is a JavaScript library that makes
+developing complex applications simple and fast.
+Easy-to-learn, small, and unassuming of your
+application structure, but with modern features
+like custom tags and 2-way binding. Creating
+apps is easy and maintainable.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h3 id="can-construct-extend-s-p-">can.Construct.extend(s,p);</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> Person = can.Construct.extend({
+    init: <span class="function"><span class="keyword">function</span> <span class="params">(name)</span> {</span>
+        <span class="keyword">this</span>.name = name;
+    }
+});
+
+<span class="keyword">var</span> cherif = <span class="keyword">new</span> Person(<span class="string">"Cherif"</span>);
+
+cherif.name</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h3 id="new-can-map-data-">new can.Map(data)</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> person = <span class="keyword">new</span> can.Map({name:<span class="string">'Cherif'</span>});
+
+person.attr(<span class="string">'name'</span>); <span class="comment">//-&gt; 'Cherif'</span>
+
+person.bind(<span class="string">'name'</span>,<span class="keyword">function</span>(ev,newVal,oldVal){
+    newVal <span class="comment">//-&gt; 'Khaled'</span>
+    oldVal <span class="comment">//-&gt; 'Cherif'</span>
+});
+
+person.attr(<span class="string">'name'</span>,<span class="string">'Khaled'</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="new-can-list-data-">new can.List(data)</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> hobbies = <span class="keyword">new</span> can.List([<span class="string">'JS'</span>]);
+
+hobbies.attr(<span class="number">0</span>); <span class="comment">//-&gt; 'JS'</span>
+
+hobbies.bind (<span class="string">'add'</span>,<span class="keyword">function</span>(ev,items,index){
+    items <span class="comment">//-&gt; ['bball','football']</span>
+    index <span class="comment">//-&gt; 1</span>
+});
+
+hobbies.push(<span class="string">'bball'</span>,<span class="string">'football'</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h3 id="can-compute-data-">can.compute(data)</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> age = can.compute(<span class="number">30</span>);
+
+age(); <span class="comment">//-&gt; 30</span>
+
+age.bind(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> <span class="params">( ev,newVal,oldVal )</span>{</span>
+    newVal <span class="comment">//-&gt; 31</span>
+    oldVal <span class="comment">//-&gt; 30</span>
+});
+
+age(<span class="number">31</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h3 id="can-compute-getter-">can.compute(getter)</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> hobbies = [<span class="string">"JS, bball, football"</span>]
+
+<span class="keyword">var</span> info = can.compute(<span class="keyword">function</span>(){
+    <span class="keyword">return</span> person.attr(<span class="string">"name"</span>)+<span class="string">" a "</span>+age()+    <span class="string">" ans et aime: "</span>+hobbies.join(<span class="string">', '</span>)
+});
+
+info() <span class="comment">//-&gt; "Cherif a 31 ans et aime JS, bball, football"</span>
+
+info.bind(<span class="string">'change'</span>,<span class="keyword">function</span>(ev,newVal,oldVal){
+    newVal <span class="comment">//-&gt; "Cherif a 33 ans et aime JS, bball"</span>
+});
+
+hobbies.pop();</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h3 id="can-model-extend-s-p-">can.Model.extend(s,p)</h3>
+<pre><code class="lang-javascript"><span class="keyword">var</span> Task = can.Model.extend({
+    findAll: <span class="string">"GET /tasks"</span>,
+    findOne: <span class="string">"GET /tasks/{id}"</span>,
+    create: <span class="string">"POST /tasks"</span>,
+    update: <span class="string">"PUT /tasks/{id}"</span>,
+    destroy: <span class="string">"DELETE /tasks/{id}"</span>
+},{});
+
+Task.findAll ({due:<span class="string">"today"</span>},<span class="keyword">function</span>(tasks){});
+Task.findOne ({id: <span class="number">51</span>},<span class="keyword">function</span>(task){});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><pre><code class="lang-javascript"><span class="keyword">var</span> task = <span class="keyword">new</span> Task({name:<span class="string">"Apprendre CanJS."</span>});
+
+task.save(<span class="keyword">function</span>(){
+    task.attr(<span class="string">"name"</span>,<span class="string">"Apprendre JS et CanJS."</span>)
+    .save(<span class="keyword">function</span>(){
+        task.destroy()
+    })
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h2 id="can-model-list-s-p-">can.Model.List(s,p)</h2>
+<pre><code class="lang-javascript"><span class="keyword">var</span> tasks= <span class="keyword">new</span> Task.List();
+
+can.each(tasks,<span class="keyword">function</span>(task){
+});
+
+<span class="comment">//custom model list</span>
+Task.List = can.Model.List.extend({
+    Map: Task
+},{});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h2 id="can-route-route-defaults-">can.route(route,defaults)</h2>
+<pre><code class="lang-javascript">can.route(<span class="string">"tasks/:id"</span>,{ type: <span class="string">"tasks"</span>});
+
+can.route.bind(<span class="string">"change"</span>, <span class="keyword">function</span>(){
+    <span class="keyword">if</span>(can.route.attr(<span class="string">'type'</span>) == <span class="string">"tasks"</span>){
+        <span class="keyword">var</span> id = can.route.attr(<span class="string">'id'</span>);
+        <span class="keyword">if</span>( id ) {
+            Task.findOne({id: id});
+        }
+    }
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h2 id="can-control-extend-p-">can.Control.extend( p )</h2>
+<pre><code class="lang-javascript"><span class="keyword">var</span> Tabs = can.Control.extend({
+    init: <span class="keyword">function</span>( el,options ) {
+        <span class="comment">// Afficher le premier onglet</span>
+    },
+    <span class="string">'li click'</span>: <span class="keyword">function</span>( el, ev ) {
+        <span class="comment">// Masquer les autes onglet</span>
+        <span class="comment">// Afficher l'onglet selectioné</span>
+    }
+});
+
+<span class="keyword">new</span> Tabs(<span class="string">'#tabs'</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h2 id="mustache-handlebars">Mustache / Handlebars</h2>
+<pre><code class="lang-javascript">{#if devs.length}}
+    {{#each devs}}
+        &lt;li&gt;{{name}}&lt;/li&gt;
+    {{/each}}
+{{else}}
+    &lt;li&gt;pas de développeurs&lt;/li&gt;
+{{/if}}
+
+$('#my-el').can.view('devs.mustache',{
+    devs: new can.List([{name:'Khaled'}])
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-18">
+    <section class="slide-content"><h2 id="can-component-extend-p-">can.Component.extend(p)</h2>
+<pre><code class="lang-javascript">can.Component.extend({
+    tag:<span class="string">"ui-panel"</span>,
+    template: <span class="string">"{{#if active}}&lt;content&gt;..."</span>,
+    viewModel: {
+        active: <span class="literal">false</span>,
+        ....
+    },
+    helpers: {}
+    events: {
+        inserted: <span class="keyword">function</span>(){...}
+    }
+});</code></pre>
+<pre><code class="lang-javascript">&lt;ui-tabs&gt;
+    {{#each foodTypes}}
+        &lt;ui-panel title='title'&gt;
+            {{content}}
+        &lt;/ui-panel&gt;
+    {{/each}}
+&lt;/ui-tabs&gt;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h2 id="2-way-binding">2 way binding</h2>
+<pre><code class="lang-javascript"><span class="keyword">var</span> Voyage= can.Map.extend({
+    voyageTemp:<span class="keyword">function</span>(){
+        <span class="keyword">return</span> <span class="keyword">this</span>.attr(<span class="string">'dist'</span>)/<span class="number">110</span> <span class="comment">//km/h</span>
+    }
+});
+<span class="keyword">var</span> alger=<span class="keyword">new</span> Voyage({
+    dist:<span class="number">563.67</span>
+});
+
+<span class="keyword">var</span> template=can.view.mustache(<span class="string">'&lt;p&gt;&lt;lable&gt;distance:&lt;/label&gt;\
+                                &lt;input can-value="dist"/&gt;&lt;/p&gt;\
+                                &lt;p&gt;Temp:{{voyageTemp}}&lt;/p&gt;'</span>
+                                );
+$(<span class="string">'#vo'</span>).html(template(alger));</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h2 id="can-view-tag-can-view-attr">can.view.tag &amp; can.view.attr</h2>
+<p>can.view tag pour implementer le comportement (behavior)</p>
+<pre><code class="lang-javascript">can.view.tag(<span class="string">'ui-calender'</span>,<span class="keyword">function</span>(el,tagData){
+
+});</code></pre>
+<p>can.view tag pour mixer le comportement (mix the behavior)</p>
+<pre><code class="lang-javascript">can.view.attr(<span class="string">'tooltip'</span>,<span class="keyword">function</span>(el,attrData){
+
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h2 id="built-with-canjs">built with CanJS</h2>
+<ul>
+<li>HP.com (<a href="http://www.hp.com/country/us/en/uc/welcome.html">http://www.hp.com/country/us/en/uc/welcome.html</a>)</li>
+<li>Apple (<a href="http://www.apple.com/shop/buy-mac/macbook">http://www.apple.com/shop/buy-mac/macbook</a>)</li>
+<li>cars.com (<a href="https://www.cars.com/">https://www.cars.com/</a>)</li>
+<li>Mindjet (<a href="https://www.mindjet.com/">https://www.mindjet.com/</a>)</li>
+<li>SamsClub (<a href="http://m.samsclub.com/">http://m.samsclub.com/</a>)</li>
+<li>BrightRoll (<a href="http://www.brightroll.com/">http://www.brightroll.com/</a>)</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><h1 id="questions">Questions</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><div class="author">
+  <h1 class="name">Cherif BOUCHELAGHEM</h1>
+    <h3 class="twitter">
+      <a href="http://twitter.com/@cherif_b">@cherif_b</a>
+    </h3>
+    <h3 class="github">
+      <a href="https://github.com/cherifGsoul">cherifGsoul</a>
+    </h3>
+    <h3 class="url">
+      <a href="http://cherifbouchelaghem.com">http://cherifbouchelaghem.com</a>
+    </h3>
+</div>
+</section>
+  </div>
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  window.history.replaceState({} , null, '#' + currentPosition());
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+         document.mozFullScreenElement ||
+         document.webkitFullscreenElement ||
+         document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+      docElem.requestFullscreen ||
+      docElem.msRequestFullscreen ||
+      docElem.mozRequestFullScreen ||
+      docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+      doc.exitFullscreen ||
+      doc.msExitFullscreen ||
+      doc.mozCancelFullScreen ||
+      doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>
